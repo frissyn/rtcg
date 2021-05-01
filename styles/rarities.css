@@ -1,0 +1,36 @@
+.card.rarity-common {
+    border-color: gray !important;
+}
+
+.card.rarity-uncommon {
+    border-color: lightblue !important;
+}
+
+.card.rarity-rare {
+    border-color: pink !important;
+}
+
+.card.rarity-veryrare {
+    border-color: #ff7676 !important;
+}
+
+.card.rarity-legendary {
+    border-color: gold !important;
+}
+
+.card.rarity-unobtainable {
+    border-image: linear-gradient(
+        to bottom right,
+        #b827fc 0%,
+        #2c90fc 25%,
+        #b8fd33 50%,
+        #fec837 75%,
+        #fd1892 100%
+    );
+    border-image-slice: 1;
+}
+
+.card.rarity-amasad {
+    box-shadow: 0 0 10px red;
+    border-color: red !important;   
+}
