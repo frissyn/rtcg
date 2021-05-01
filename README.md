@@ -1,6 +1,6 @@
 # Replit-TCG
 
-This repository contains the CSS and Design Notes for a super-duper cool Replit Trading card game (WIP). There's no concrete project yet, but you can check out the [`Demo`](https://tcg.frissyn.repl.co/).
+This repository contains the CSS and Design Notes for a super-duper cool Replit Trading card game (WIP). There's no concrete project yet, but you can check out the [`Design Demo`](https://tcg.frissyn.repl.co/) and [`TCG Prototype`](https://replit-trading-cards-thing.dart.repl.co/).
 
 ### Usage
 
