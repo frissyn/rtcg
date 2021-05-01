@@ -1,0 +1,54 @@
+.card.glean {
+    animation: cardGlean 15s ease infinite;
+}
+
+@keyframes cardGlean {
+    0%, 100% {
+        transform: none;
+    }
+    25% {
+        transform: rotateZ(-3deg) rotateX(-7deg) rotateY(6deg);
+    }
+    66% {
+        transform: rotateZ(3deg) rotateX(7deg) rotateY(-6deg);
+    }
+}
+
+@keyframes cardSparkle {
+    0%, 5% {
+        opacity: 0.1;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
+
+@keyframes holoGradient {
+    0%, 100% {
+        opacity: 0;
+        background-position: 0% 0%;
+    }
+    8% {
+        opacity: 0;
+    }
+    10% {
+        background-position: 0% 0%;
+    }
+    19% {
+        background-position: 100% 100%;
+        opacity: 0.5;
+    }
+    35% {
+        background-position: 100% 100%;
+    }
+    55% {
+        background-position: 0% 0%;
+        opacity: 0.3;
+    }
+    75% {
+        opacity: 0;
+    }
+}

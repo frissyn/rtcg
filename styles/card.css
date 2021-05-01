@@ -1,0 +1,92 @@
+.glean {
+    animation: cardGlean 15s ease infinite;
+}
+
+.card {
+    width: 320px;
+    height: 446px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 5px solid grey;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: darkgray;
+    border-radius: 5% / 3.5%;
+    box-shadow: 
+        -3px -3px 3px 0 rgba(#26e6f7, 0.3),
+        3px 3px 3px 0 rgba(#f759e4, 0.3),
+        0 0 6px 2px rgba(#ffe759, 0.3),
+        0 35px 25px -15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.card.small {
+    width: 120px !important;
+    height: 167px !important;
+}
+
+.card.medium {
+    width: 180px !important;
+    height: 251px !important;
+}
+
+.card.large {
+    width: 240px !important;
+    height: 335px !important;
+}
+
+.card.shiny::before,
+.card.shiny::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-image: linear-gradient(
+        115deg,
+        transparent 0%,
+        rgb(0, 231, 255) 30%,
+        rgb(255, 0, 231) 70%,
+        transparent 100%
+    );
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: 300% 300%;
+    mix-blend-mode: color-dodge;
+    opacity: 0.2;
+    z-index: 1;
+    animation: holoGradient 15s ease infinite;
+}
+
+
+.card.shiny::after {
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif");
+    background-position: center;
+    background-size: 180%;
+    mix-blend-mode: color-dodge;
+    opacity: 1;
+    z-index: 2;
+    animation: cardSparkle 15s ease infinite;
+}
+
+.card > img.card-header {
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 50%;
+    position: relative;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card-content {
+    top: 40%;
+    font-size: 90%;
+    text-align: center;
+}

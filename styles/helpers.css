@@ -1,0 +1,8 @@
+body {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 10px;
+    color: #363636;
+    background: #ffffff;
+    text-rendering: optimizeLegibility;
+}
