@@ -1,15 +1,17 @@
-# Replit-TCG
+# RTCG
 
-This repository contains the CSS and Design Notes for a super-duper cool Replit Trading card game (WIP). There's no concrete project yet, but you can check out the [`Design Demo`](https://tcg.frissyn.repl.co/) and [`TCG Prototype`](https://replit-trading-cards-thing.dart.repl.co/).
+RTCG, or Replit Trading Card Game is a community project for making a card index out of the ReplTalk population. This repository contains the source for both the card API and the Design framework the cards in a webpage enviornment.
 
-### Usage
+### Repo Structure
 
-TODO: Add usage instructions here.
+Each portion of the project exists in it's own folder. These projects are repls hosted on repl that you can view from [`here`](https://replit.com/@rtcg).
+
+**`api/`:** The Flask application and webserver that makes up the API.
+
+**`design/`:** The CSS design framework for the cards.
 
 ### License and Credits
 
-**Manager:** Dart
+RTCG Team: `frissyn`, `Dart`, and `miro`
 
-**Designers:** frissyn, miro
-
-Project is currently unlicensed. Credits to [`this codepen`](https://codepen.io/simeydotme/pen/PrQKgo) for inspiring the foundational design of the cards.
+All source code for RTCG is under an **MIT License**.
