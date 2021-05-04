@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RTCG Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <style>.form-inline{display:flex;flex-flow:row wrap;align-items:center}.form-inline input{vertical-align:middle;margin:5px 10px 5px 0;padding:10px}@media (max-width:800px){.form-inline input{margin:10px 0}.form-inline{flex-direction:column;align-items:stretch}}</style>
+</head>
+<body>
+    {% if not admin %}
+        <script src="../static/replauth.js"></script>
+    {% else %}
+        <h1>Admin Dashboard</h1><hr>
+        {% if msg %}<button style="width: 100%">{{ msg }}</button><hr>{% endif %}
+
+        <h3>Add a Card</h3>
+        <form action="" method="POST">
+            <input type="hidden" name="action" value="add">
+
+            <div class="form-inline">
+                <label for="name">Name:&nbsp;&nbsp;</label>
+                <input type="text" name="name">
+
+                <label for="title">Title:&nbsp;&nbsp;</label>
+                <input type="text" name="title">
+            </div>
+
+            <div class="form-inline">
+                <label for="description">Description:&nbsp;&nbsp;</label>
+                <input type="text" name="description">
+
+                <label for="image">Image URL:&nbsp;&nbsp;</label>
+                <input type="text" name="image">
+            </div>
+
+            <div class="form-inline">
+                <label for="color">Hex Color:&nbsp;&nbsp;</label>
+                <input type="text" name="color">
+
+                <label for="rarity">Card Rarity:</label>
+                <select name="rarity">
+                    <option>Common</option>
+                    <option>Uncommon</option>
+                    <option>Rare</option>
+                    <option>Very Rare</option>
+                    <option>Legendary</option>
+                    <option>Unobtainable</option>
+                </select>
+
+                <label for="shiny">Shiny?&nbsp;&nbsp;</label>
+                <input type="checkbox" name="shiny">
+
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+        <hr><h3>Delete Card by ID:</h3>
+        <form action="" method="POST" class="form-inline">
+            <input type="hidden" name="action" value="delete">
+
+            <input type="text" name="id">
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+</body>
+</html>
