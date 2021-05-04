@@ -23,10 +23,13 @@ def card_route(iden: int):
     if req.method == "GET":
         return flask.jsonify(card.serialize())
     elif req.method == "DELETE":
-        db.session.delete(card)
-        db.session.commit()
+        if req.headers.get("X-API-TOKEN") in tokens:
+            db.session.delete(card)
+            db.session.commit()
 
-        return "", 204
+            return "", 204
+        else:
+            return flask.abort(403)
 
 
 @app.route("/card/add", methods=["POST"])
