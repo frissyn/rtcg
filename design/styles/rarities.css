@@ -29,8 +29,3 @@
     );
     border-image-slice: 1;
 }
-
-.card.rarity-amasad {
-    box-shadow: 0 0 10px red;
-    border-color: red !important;   
-}
