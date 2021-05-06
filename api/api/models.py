@@ -16,5 +16,14 @@ class Card(db.Model):
     def serialize(self):
         return {c: getattr(self, c) for c in inspect(self).attrs.keys()}
 
+    def update(self, d : dict):
+        for key, val in d.items():
+            if hasattr(self, key) and bool(val):
+                setattr(self, key, val)
+            else:
+                pass
+
+        return True
+
     def __repr__(self):
         return f"<Card @id:{self.id}, @name:{self.name}>"

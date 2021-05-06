@@ -1,4 +1,3 @@
-import json
 import flask
 
 from api import db
@@ -15,13 +14,30 @@ def cards_route():
     return flask.jsonify([c.serialize() for c in cards])
 
 
-@app.route("/card/<iden>", methods=["GET", "DELETE"])
+@app.route("/card/<iden>", methods=["GET", "DELETE", "PUT"])
 def card_route(iden: int):
     req = flask.request
     card = Card.query.get_or_404(iden)
     
     if req.method == "GET":
         return flask.jsonify(card.serialize())
+    elif req.method == "PUT":
+        if req.headers.get("X-API-TOKEN") in tokens:
+            card.update({
+                "name": req.form.get("name"),
+                "image": req.form.get("image"),
+                "title": req.form.get("title"),
+                "rarity": req.form.get("rarity"),
+                "color": req.form.get("color"),
+                "shiny": bool(int(req.form.get("shiny"))),
+                "desc": req.form.get("description")
+            })
+
+            db.session.commit()
+
+            return flask.jsonify(card.serialize())
+        else:
+            return flask.abort(404)
     elif req.method == "DELETE":
         if req.headers.get("X-API-TOKEN") in tokens:
             db.session.delete(card)
