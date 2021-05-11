@@ -1,6 +1,7 @@
 import os
 import flask
 import secrets
+import psycopg2
 
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -13,9 +14,11 @@ app.config.from_mapping({
     "CACHE_TYPE": "simple",
     "CACHE_DEFAULT_TIMEOUT": 300,
     "SECRET_KEY": secrets.token_hex(16),
-    "SQLALCHEMY_DATABASE_URI": "sqlite:///db/site.db",
+    "SQLALCHEMY_DATABASE_URI": os.environ["DATABASE_URL"],
     "SQLALCHEMY_TRACK_MODIFICATIONS": False
 })
+conn = psycopg2.connect(os.environ["DATABASE_URL"], sslmode='require')
+
 
 tokens = [os.getenv("TOKEN")]
 db = SQLAlchemy(app)
