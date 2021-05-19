@@ -1,13 +1,15 @@
-# RTCG
+# [RTCG](https://rtcg.repl.co/)
 
-RTCG, or Replit Trading Card Game is a community project for making a card index out of the ReplTalk population. This repository contains the source for both the card API and the Design framework the cards in a webpage enviornment.
+RTCG, or Replit Trading Card Game, is a community-led open source project made to create a Pokemon-like card index for the Replit community and its members. This repository contains the source for the API, Admin Dashboard, and CSS Library for the RTCG project. You can find the main site [here](https://rtcg.repl.co/).
 
-### Structure
+### Purpose
 
-Each portion of the project exists in it's own folder. These projects are repls hosted on repl that you can view from [`here`](https://replit.com/@rtcg).
+Despie it's name, this project will not contain any game-like interactions for the card index. The purpose of this project is to build a comprehensive API for interacting *with* the cards. While there are no plans to create a game, you're more than welcome to use the API to make one of your own!
 
-### License and Credits
+### Contributing
 
-RTCG Team: `frissyn`, `Dart`, and `miro`
+RTCG is currently closed to contributions, feel free to help out once we open up!
 
-All source code for RTCG is under an **MIT License**.
+### License
+
+All code contained in this repository is under an **MIT License**.
