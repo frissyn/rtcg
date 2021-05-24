@@ -9,7 +9,7 @@
 </head>
 <body>
     {% if not admin %}
-        <script src="../static/replauth.js"></script>
+        <script src="../static/replauth.js" authed="location.reload()"></script>
     {% else %}
         <h1>Admin Dashboard</h1><hr>
         {% if msg %}<button style="width: 100%">{{ msg }}</button><hr>{% endif %}
@@ -41,7 +41,7 @@
 
             <div class="form-inline">
                 <label for="color">Hex Color:&nbsp;&nbsp;</label>
-                <input type="text" name="color">
+                <input type="color" name="color">
                 <label for="rarity">Card Rarity:</label>
                 <select name="rarity">
                     <option>Common</option>
@@ -52,7 +52,10 @@
                     <option>Unobtainable</option>
                 </select>
                 <label for="shiny">Shiny?&nbsp;&nbsp;</label>
-                <input type="checkbox" name="shiny">
+                <select name="shiny">
+                    <option>True</option>
+                    <option>False</option>
+                </select>
                 <button type="submit">Submit</button>
             </div>
         </form>
@@ -82,7 +85,7 @@
 
             <div class="form-inline">
                 <label for="color">Hex Color:&nbsp;&nbsp;</label>
-                <input type="text" name="color">
+                <input type="color" name="color">
                 <label for="rarity">Card Rarity:</label>
                 <select name="rarity">
                     <option>Common</option>
@@ -93,7 +96,10 @@
                     <option>Unobtainable</option>
                 </select>
                 <label for="shiny">Shiny?&nbsp;&nbsp;</label>
-                <input type="checkbox" name="shiny">
+                <select name="shiny">
+                    <option>True</option>
+                    <option>False</option>
+                </select>
                 <button type="submit">Submit</button>
             </div>
         </form>

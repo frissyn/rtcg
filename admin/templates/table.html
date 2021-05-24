@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RTCG Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/form.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <style>body {max-width: 92% !important}.form-inline{display:flex;flex-flow:row wrap;align-items:center}.form-inline input{vertical-align:middle;margin:5px 10px 5px 0;padding:10px}@media (max-width:800px){.form-inline input{margin:10px 0}.form-inline{flex-direction:column;align-items:stretch}}table td input{width: 100% !important; box-sizing: border-box}th.id{width: 60px}th.shiny{width: 80px}th.actions{width: 80px}</style>
+</head>
+<body>
+{% if not admin %}
+    <script src="../static/replauth.js" authed="location.reload()"></script>
+{% else %}
+    <h1>Admin Dashboard</h1><hr>
+    {% if msg %}<button style="width: 100%">{{ msg }}</button><hr>{% endif %}
+
+    <table>
+        <thead><tr>
+            <th style="column-width: 60px" class="id"><b>ID</b></th>
+            <th>Name</th>
+            <th class="shiny">Color</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Rarity</th>
+            <th class="shiny">Shiny</th>
+            <th class="actions"><b>Actions</b></th>
+        </tr></thead>
+    <tbody>
+    {% for card in c %}
+    <tr>
+        <form action="" method="POST" id="card-{{ card['id'] }}">
+        <td style="column-width: 60px"><input type="number" name="id" value="{{ card["id"] }}"></td>
+        <td><input type="text" name="name" value="{{ card["name"] }}"></td>
+        <td><input type="color" name="color" value="{{ card["color"] }}"></td>
+        <td><input type="text" name="title" value="{{ card["title"] }}"></td>
+        <td><textarea name="description" cols="14" rows="5">{{ card["description"] }}</textarea></td>
+        <td><input type="text" name="image" value="{{ card["image"] }}"></td>
+        <td>
+            <select name="rarity">
+                <option {% if card["rarity"] == "Common" %}selected{% endif %}>Common</option>
+                <option {% if card["rarity"] == "Uncommon" %}selected{% endif %}>Uncommon</option>
+                <option {% if card["rarity"] == "Rare" %}selected{% endif %}>Rare</option>
+                <option {% if card["rarity"] == "Very Rare" %}selected{% endif %}>Very Rare</option>
+                <option {% if card["rarity"] == "Legendary" %}selected{% endif %}>Legendary</option>
+                <option {% if card["rarity"] == "Unobtainable" %}selected{% endif %}>Unobtainable</option>
+            </select>
+        </td>
+        <td>
+            <select name="shiny">
+                <option {% if card["shiny"] == True %}selected{% endif %}>True</option>
+                <option {% if card["shiny"] == False %}selected{% endif %}>False</option>
+            </select>
+        </td>
+        <td>
+            <button style="background-color: green" onclick="send('card-{{ card['id'] }}', 'update')">EDIT</button>
+            <button style="background-color: red" onclick="send('card-{{ card['id'] }}', 'delete')">DEL&nbsp;</button>
+        </td>
+        </form>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endif %}
+</body>
+</html>
