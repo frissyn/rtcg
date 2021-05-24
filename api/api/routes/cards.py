@@ -3,11 +3,13 @@ import flask
 from api import db
 from api import app
 from api import tokens
+from api import limiter
 
 from ..models import Card
 
 
 @app.route("/cards")
+@limiter.limit("75 per minute")
 def cards_route():
     cards = Card.query.all()
     
@@ -15,6 +17,7 @@ def cards_route():
 
 
 @app.route("/card/<iden>", methods=["GET", "DELETE", "PUT"])
+@limiter.limit("75 per minute")
 def card_route(iden: int):
     req = flask.request
     card = Card.query.get_or_404(iden)
@@ -29,8 +32,8 @@ def card_route(iden: int):
                 "title": req.form.get("title"),
                 "rarity": req.form.get("rarity"),
                 "color": req.form.get("color"),
-                "shiny": bool(int(req.form.get("shiny"))),
-                "desc": req.form.get("description")
+                "shiny": req.form.get("shiny") == "True",
+                "description": req.form.get("description"),
             })
 
             db.session.commit()
@@ -49,18 +52,21 @@ def card_route(iden: int):
 
 
 @app.route("/card/add", methods=["POST"])
+@limiter.limit("10 per minute")
 def card_add_route():    
     req = flask.request
 
     if req.headers.get("X-API-TOKEN") in tokens:
         card = Card()
-        card.name = req.form.get("name")
-        card.image = req.form.get("image")
-        card.title = req.form.get("title")
-        card.rarity = req.form.get("rarity")
-        card.color = req.form.get("color")
-        card.shiny = bool(int(req.form.get("shiny")))
-        card.description = req.form.get("description")
+        card.update({
+            "name": req.form.get("name"),
+            "image": req.form.get("image"),
+            "title": req.form.get("title"),
+            "rarity": req.form.get("rarity"),
+            "color": req.form.get("color"),
+            "shiny": req.form.get("shiny") == "True",
+            "description": req.form.get("description")
+        })
 
         db.session.add(card)
         db.session.commit()

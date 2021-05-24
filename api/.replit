@@ -1,1 +1,1 @@
-run="export FLASK_APP=api/runner.py; python runner.py"
+run = "export FLASK_APP=api/__init__.py; python runner.py"
