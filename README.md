@@ -12,4 +12,4 @@ RTCG is currently closed to contributions, feel free to help out once we open up
 
 ### License
 
-All code contained in this repository is under an **MIT License**.
+All code contained in this repository is under an [**MIT License**](https://github.com/frissyn/rtcg/blob/master/LICENSE).
